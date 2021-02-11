@@ -1,0 +1,89 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    base(href='/')
+    title=title
+
+    // Favicon
+    link(rel='shortcut icon', href='images/icons/favicon.png', type='image/x-icon')
+
+    // Bootstrap
+    link(rel='stylesheet', type='text/css', href='stylesheets/css/bootstrap.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/fonts/font-awesome/css/font-awesome.css')
+
+    // Stylesheet
+    link(rel='stylesheet', type='text/css', href='stylesheets/css/style.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/css/nivo-lightbox/nivo-lightbox.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/css/nivo-lightbox/default.css')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet')
+    
+  body#page-top(data-target='.navbar-fixed-top')
+    // Navigation
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.page-scroll(href='/') 
+            img(src='images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/vesti') Vesti
+            li
+              a(href='/istorijat') Istorijat
+            li
+              a(href='/oNama') Kontakt
+            li
+              a(href='/dokumenti') Dokumenti
+            li
+              a.active(href='/login') Prijava
+  #login
+    .container(style='padding-bottom: 14%;') 
+      .col-md-3.col-md-offset-1.contact-info
+        .contact-item(style='padding-top: 20px;') 
+          h2 Prijava
+          br
+          br
+          form#loginForm(method='POST', action='/login', name='login')
+            != messages('message', locals)
+            if errors
+              each error, i in errors
+                div(class="alert alert-danger") #{error.msg}
+            .row
+              .col-md-12
+                .form-group
+                  input.email.form-control(type='Email', placeholder='Email', name="email", maxlength="30")
+                  #email_feedback
+            .row
+              .col-md-12
+                .form-group
+                  input.password.form-control(type='password', placeholder='Lozinka', name='lozinka', maxlength="10")
+                  #password_feedback
+            .row
+              .col-md-12 
+                small 
+                  | Ako još niste registrovani, 
+                  a(href='/#state', style='color: rgba(255,255,255,.65);') registrujte se.
+            br
+            input#loginButton.btn.btn-primary(type='submit' value="Prijavi se")             
+
+// Footer Section
+#footer 
+  .container.text-center
+    p
+      | © 2018 Abacus Rex D.O.O Design by 
+      a(href='http://www.abacusrex.rs', rel='nofollow') Abacus Rex
+
+script(src='//code.jquery.com/jquery-1.11.1.min.js')
+script(type='text/javascript', src='javascripts/jquery.1.11.1.js') 
+script(type='text/javascript', src='javascripts/bootstrap.js')
+script(type='text/javascript', src='javascripts/nivo-lightbox.js')
+script(type='text/javascript', src='javascripts/jqBootstrapValidation.js')
+script(type='text/javascript', src='javascripts/main.js')
+script(type='text/javascript', src='javascripts/free.js')

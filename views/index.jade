@@ -1,0 +1,188 @@
+extends layout
+
+block content
+  body#page-top(data-target='.navbar-fixed-top')
+    // Navigation
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.page-scroll(href='/') 
+            img(src='images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/vesti') Vesti
+            li
+              a(href='/istorijat') Istorijat
+            li
+              a(href='/oNama') Kontakt
+            li
+              a(href='/dokumenti') Dokumenti
+            li
+              a(href='/login') Prijava  
+            // .dropdown
+              li.dropli(onclick='myFunction()') Jezik
+              #myDropdown.dropdown-content
+                a(href='#') Srpski
+                a(href='#') Српски
+                a(href='#') Magyar       
+  #myCarouselCustom.carousel.slide(data-ride='carousel' style='width: 100%;')
+    // Indicators
+    ol.carousel-indicators
+      li.active(data-target='#myCarouselCustom', data-slide-to='0')
+      li(data-target='#myCarouselCustom', data-slide-to='1')
+    // Wrapper for slides
+    .carousel-inner
+      .item.active
+        img(src='images/header/header2.jpg')
+        .hero(style="margin-top: 50px;")
+          if helps == ''
+            h2 Nema podataka!
+          else
+            h2 #{helps[0].hint}
+          p 
+            a(href='/vesti') Pročitajte ceo tekst
+      .item
+        img(src='images/header/header3.jpg')
+        .hero(style="margin-top: 120px;")
+          if helps == ''
+            h2 Nema podataka!
+          else 
+            h2 #{helps[1].hint}
+          p 
+            a(href='/vesti') Pročitajte ceo tekst
+    // Controls
+    a#prevBtn.left.carousel-control(href='javascript:void(0);', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left
+      span.sr-only Previous
+    a#nextBtn.right.carousel-control(href='javascript:void(0);', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right
+      span.sr-only Next
+
+  // Vesti Section
+  #vesti
+    .container
+      .section-title
+        h2 Aktuelnosti
+      .row
+        for val in helps
+          .col-md-4
+            .vesti-desc
+              h3 #{val.hint}
+              p
+                small Datum objave: #{val.datum}
+                br
+                br
+                | #{val.descript.substr(1, 300)} ...
+                br
+                a(href='/vesti') Detaljnije
+        .col-md-4
+          .vesti-desc
+            h3 Javne Nabavke
+            p
+              br
+              br
+              - for(var i = 0; i < 2; i++) {
+                if fileTypeJavneNabavke[i] == 'pdf' || fileTypeJavneNabavke[i] == 'PDF'
+                  img(src='../images/icons/pdf.png' height='35px')
+                else if fileTypeJavneNabavke[i] == 'doc' || fileTypeJavneNabavke[i] == 'DOC'
+                  img(src='../images/icons/doc.png' height='35px')
+                else if fileTypeJavneNabavke[i] == 'xls' || fileTypeJavneNabavke[i] == 'XLS'
+                  img(src='../images/icons/excel.png' height='35px')
+                else if fileTypeJavneNabavke[i] == 'docx' || fileTypeJavneNabavke[i] == 'DOCX'
+                  img(src='../images/icons/docx.png' height='35px')
+                a(href='../files/javneNabavke/' + filesJavneNabavke[i], download='')= filesJavneNabavke[i]
+                br
+                br
+              - }
+  // Registration Section
+  #state
+  #login
+    .container  
+      .col-md-9
+        .row
+          .section-title
+            h2 Registracija
+        .regist(style='margin-left: -2%;')
+          .errorLog(style='font-size: 15px;')
+            != messages('message', locals)
+            if errors
+              each error, i in errors
+                div(class='alert alert-danger') #{error.msg}
+          .row
+            .col-md-6
+              .form-group
+                input.ime.form-control(type='text', placeholder='Ime', name='ime', maxlength='60', style='font-size: 15px;')
+                #ime_feedback
+            .col-md-6
+              .form-group
+                input.lozinka1.form-control(type='password', placeholder='Lozinka', name="lozinka1", maxlength="15", style='font-size: 15px;')
+                #lozinka1_feedback
+          .row
+            .col-md-6
+              .form-group
+                input.email.form-control(type='Email', placeholder='E-mail', name="email", maxlength="30", style='font-size: 15px;')
+                #email_feedback
+            .col-md-6
+              .form-group
+                input.lozinka2.form-control(type='password', placeholder='Provera lozinka', name="lozinka2", maxlength="15", style='font-size: 15px;')
+                #lozinka2_feedback
+          .row
+            .col-md-6
+              .form-group
+                input.sifra.form-control(type='Number', placeholder='Broj vodomera', name="sifra", maxlength="20", style='font-size: 15px;')
+                #sifra_feedback
+            .col-md-6
+              .form-group
+                input.telefon.form-control(type='Number', placeholder='Telefon', name="telefon", maxlength="20", style='font-size: 15px;')
+                #telefon_feedback
+                br
+          input#registrujButton.btn.btn-primary(type='submit' value='Registruj se' style='font-size: 15px;') 
+
+  // Galerija Section
+  #portfolio
+    .container
+      .section-title
+        h2 Galerija
+      .row
+        .portfolio-items
+          .col-sm-6.col-md-4.col-lg-4
+            .portfolio-item
+              .hover-bg
+                a(href='images/galerija/galerija1.jpg', title='', data-lightbox-gallery='gallery1')
+                  .hover-text
+                    h4
+                  img.img-responsive(src='images/galerija/galerija1.jpg', alt='Slika1')
+          .col-sm-6.col-md-4.col-lg-4
+            .portfolio-item
+              .hover-bg
+                a(href='images/galerija/galerija2.jpg', title='', data-lightbox-gallery='gallery1')
+                  .hover-text
+                    h4 
+                  img.img-responsive(src='images/galerija/galerija2.jpg', alt='Slika2')
+          .col-sm-6.col-md-4.col-lg-4
+            .portfolio-item
+              .hover-bg
+                a(href='images/galerija/galerija3.jpg', title='', data-lightbox-gallery='gallery1')
+                  .hover-text
+                    h4 
+                  img.img-responsive(src='images/galerija/galerija3.jpg', alt='Slika23')
+          .col-sm-6.col-md-4.col-lg-4
+            .portfolio-item
+              .hover-bg
+                a(href='images/galerija/galerija4.jpg', title='', data-lightbox-gallery='gallery1')
+                  .hover-text
+                    h4 
+                  img.img-responsive(src='images/galerija/galerija4.jpg', alt='Slika4')
+          .col-sm-6.col-md-4.col-lg-4
+            .portfolio-item
+              .hover-bg
+                a(href='images/galerija/galerija5.jpg', title='', data-lightbox-gallery='gallery1')
+                  .hover-text
+                    h4 
+                  img.img-responsive(src='images/galerija/galerija5.jpg', alt='Slika5')

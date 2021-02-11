@@ -1,0 +1,104 @@
+extends layout
+
+block content
+  body#page-top(data-target='.navbar-fixed-top')
+    // Navigation
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.page-scroll(href='/') 
+            img(src='images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/vesti') Vesti
+            li
+              a(href='/istorijat') Istorijat
+            li
+              a(href='/oNama') Kontakt
+            li
+              a.active(href='/dokumenti') Dokumenti
+            li
+              a(href='/login') Prijava
+  #javneNabavke(style="font-size: 15px;")
+    .container
+      .col-md-7
+        .section-title(style='margin-top: 7em;')
+          h2 Javne Nabavke
+        .javneNabavke(style='margin-top: -5%;')
+          - for(var i = 0; i < arrayLengthJavneNabavke; i++) {
+            br
+            br
+            if fileTypeJavneNabavke[i] == 'pdf' || fileTypeJavneNabavke[i] == 'PDF'
+              img(src='../images/icons/pdf.png' height='35px')
+            else if fileTypeJavneNabavke[i] == 'doc' || fileTypeJavneNabavke[i] == 'DOC'
+              img(src='../images/icons/doc.png' height='35px')
+            else if fileTypeJavneNabavke[i] == 'xls' || fileTypeJavneNabavke[i] == 'XLS'
+              img(src='../images/icons/excel.png' height='35px')
+            else if fileTypeJavneNabavke[i] == 'docx' || fileTypeJavneNabavke[i] == 'DOCX'
+              img(src='../images/icons/docx.png' height='35px')
+            a(href='../files/javneNabavke/' + filesJavneNabavke[i], download='')= filesJavneNabavke[i]
+          - }
+      .col-md-5
+        .section-title(style='margin-top: 7em;')
+          h2 Izveštaji
+        .izvestaji(style='margin-top: -5%;')
+          - for(var i = 0; i < arrayLengthIzvestaji; i++) {
+            br
+            br
+            if fileTypeIzvestaji[i] == 'pdf' || fileTypeIzvestaji[i] == 'PDF'
+              img(src='../images/icons/pdf.png' height='35px')
+            else if fileTypeIzvestaji[i] == 'doc' || fileTypeIzvestaji[i] == 'DOC'
+              img(src='../images/icons/doc.png' height='35px')
+            else if fileTypeIzvestaji[i] == 'xls' || fileTypeIzvestaji[i] == 'XLS'
+              img(src='../images/icons/excel.png' height='35px')
+            else if fileTypeIzvestaji[i] == 'docx' || fileTypeIzvestaji[i] == 'DOCX'
+              img(src='../images/icons/docx.png' height='35px')
+            a(href='../files/izvestaji/' + filesIzvestaji[i], download='')= filesIzvestaji[i]
+          - }
+        br
+  #osnovniDokumenti(style="font-size: 15px;")
+    .container
+      .col-md-7
+        .section-title(style='margin-top: 7%;')
+          h2 Osnovni dokumenti
+        .osnovniDokumenti(style='margin-top: -5%; margin-bottom: 10%;')
+          - for(var i = 0; i < arrayLengthOsnovniDokumenti; i++) {
+            br
+            br
+            if fileTypeOsnovniDokumenti[i] == 'pdf' || fileTypeOsnovniDokumenti[i] == 'PDF'
+              img(src='../images/icons/pdf.png' height='35px')
+            else if fileTypeOsnovniDokumenti[i] == 'doc' || fileTypeOsnovniDokumenti[i] == 'DOC'
+              img(src='../images/icons/doc.png' height='35px')
+            else if fileTypeOsnovniDokumenti[i] == 'xls' || fileTypeOsnovniDokumenti[i] == 'XLS'
+              img(src='../images/icons/excel.png' height='35px')
+            else if fileTypeOsnovniDokumenti[i] == 'docx' || fileTypeOsnovniDokumenti[i] == 'DOCX'
+              img(src='../images/icons/docx.png' height='35px')
+            else
+              img(src='../images/icons/error.png' height='35px')
+            a(href='../files/osnovniDokumenti/' + filesOsnovniDokumenti[i], download='')= filesOsnovniDokumenti[i]
+          - }
+      .col-md-5
+        .section-title(style='margin-top: 7%;')
+            h2 Radne biografije 
+        .radneBiografije(style='margin-top: -5%; font-size: 15px;')
+          - for(var i = 0; i < arrayLengthRadneBiografije; i++) {
+            br
+            br
+            if fileTypeRadneBiografije[i] == 'pdf' || fileTypeRadneBiografije[i] == 'PDF'
+              img(src='../images/icons/pdf.png' height='35px')
+            else if fileTypeRadneBiografije[i] == 'doc' || fileTypeRadneBiografije[i] == 'DOC'
+              img(src='../images/icons/doc.png' height='35px')
+            else if fileTypeRadneBiografije[i] == 'xls' || fileTypeRadneBiografije[i] == 'XLS'
+              img(src='../images/icons/excel.png' height='35px')
+            else if fileTypeRadneBiografije[i] == 'docx' || fileTypeRadneBiografije[i] == 'DOCX'
+              img(src='../images/icons/docx.png' height='35px')
+            else
+              img(src='../images/icons/error.png' height='35px')
+            a(href='../files/radneBiografije/' + filesRadneBiografije[i], download='')= filesRadneBiografije[i]
+          - }

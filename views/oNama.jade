@@ -1,0 +1,153 @@
+extends layout
+
+block content
+  body#page-top(data-target='.navbar-fixed-top')
+    // Navigation
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.page-scroll(href='/') 
+            img(src='images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/vesti') Vesti
+            li
+              a(href='/istorijat') Istorijat
+            li
+              a.active(href='/oNama') Kontakt
+            li
+              a(href='/dokumenti') Dokumenti
+            li
+              a(href='/login') Prijava
+  // Kontakt Section
+  #contact
+    .container
+      .col-md-8
+        .row
+          .section-title
+            h2 Kontakt
+        .kontakt(style='margin-left: -2%;')
+          .row
+            .col-md-6
+              .form-group
+                input.ime.form-control(type='text', name='ime', maxlength= '20', placeholder='Ime')
+                #ime_feedback
+            .col-md-6
+              .form-group
+                input.email.form-control(type='email', name='email', maxlength= '25', placeholder='Email')
+                #email_feedback
+          .form-group
+            textarea.poruka.form-control(name='poruka', rows='4', placeholder='Tekst')
+            #poruka_feedback
+          br
+          button#kontaktButton.btn.btn-primary.btn-lg(type='submit') Pošalji poruku
+        .social
+          ul
+            li
+              a(href='/oNama/#')
+                i.fa.fa-facebook
+            li
+              a(href='/oNama/#')
+                i.fa.fa-twitter
+            li
+              a(href='/oNama/#')
+                i.fa.fa-google-plus
+            li
+              a(href='/oNama/#')
+                i.fa.fa-youtube
+      .col-md-3.col-md-offset-1.contact-info
+        .contact-item
+          h4 Kontakt Info
+          p
+            span Address
+            | 25270 Bezdan,
+            br
+            |  Somborski put bb
+        .contact-item
+          p
+            span Telefon
+            |  025 810-369
+        .contact-item
+          p
+            span Email
+            |  vodovodkom@mts.rs
+  
+  #vesti
+    .container
+      .section-title(style='font-size: 15px;')
+        h2 Podaci 
+        br
+        br
+        br
+        br
+        .col-md-2
+          strong Osnovne informacije:
+          br
+          br
+          | > JKP Vodovod Bezdan
+          br
+          | > Somborski put bb
+          br
+          | > 25270 Bezdan
+          br
+          | > Email: vodovodkom@mts.rs
+          br
+          | > Telefon: 025 810-369
+          br
+          | > PIB: 100613555
+          br
+          | > Matični broj: 08189544
+          br
+          | > Šifra delatnosti 3600
+          br
+        .col-md-2
+          strong Brojevi računa preduzeća:
+          br
+          br
+          | > Poštanska štedionica: 200-2825680101040-80
+          br
+          | > Banka Intesa: 160-924754-14
+          br
+          | > Vojvođanska banka: 355-1002906-59
+        .col-md-2
+          strong Radno vreme:
+          br
+          br
+          | > Uprava preduzećaa 07-15 časova
+          br
+          | > Tehnička služba obavlja poslove u kontinuitetu tokom dana - 24 časa, svih 7 dana u nedelji (24/7)
+          br
+        .col-md-2
+          strong Telefoni za kontakt:
+          br
+          br
+          | > Uprava preduzeća 025 810-369
+          br
+          | > Služba za reklamacije : 025 810-369 u periodu od 07 do 15 časova
+        .col-md-2
+          strong Upravljačka struktura
+          br
+          br
+          i Rukovodstvo preduzeća
+          br
+          i direktor Dejan Kubatov, dipl.inž.tehnologije
+          br
+          i Nadzorni odbor
+        .col-md-2
+          strong 1. Levente Čapo
+          br 
+          | dipl.inž.šum. - predsednik Nadzornog odbora 
+          br
+          strong 2. Krivokuća Nikola
+          br 
+          | prof. u penziji- član Nadzornog odbora 
+          br
+          strong 3. Pest Slavica
+          br 
+          | dipl.pravnik- član Nadzornog odbora -predstavnik zaposlenih

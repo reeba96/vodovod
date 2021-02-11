@@ -1,0 +1,128 @@
+extends layout
+
+block content
+  body#page-top(data-target='.navbar-fixed-top')
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.page-scroll(href='/knjigovodja/index', , data-toggle='tooltip', title='Home') 
+            img(src='../images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/knjigovodja/dokumenti') Dokumenti
+            .dropdown
+              li.dropli(onclick='myFunction()') Vesti
+                #myDropdown.dropdown-content
+                  a(href='/knjigovodja/vesti') Objava
+                  a(href='/knjigovodja/vestiBrisanje') Sakrivanje i brisanje  
+            li
+              a.active(href='/knjigovodja/index') Blagajna
+            li#dropmenu.dropdown
+              img.avatarIcon(src='../images/icons/avatar_1.jpg')
+              .dropdown-content
+                a(href='#' style="pointer-events: none;") #{naziv}
+                a(href='/odjava') Odjava
+    .container(style='margin-top: 8em; margin-bottom: 4em;')
+      .section-title(style='margin-top: 2em;')
+        h2 
+          img.avatarIcon(src='../images/icons/cashDesk.jpg' style='height: 40px; padding-bottom: 12px;')
+          |  Blagajna  
+          img.infoIcon(src='../images/icons/info.png' title='ss' style='height: 28px;')
+      .card.person-card
+        .row(style='margin-top: -3%;')
+          .col-md-12
+            .card(style='margin: -0.5% 1% 1% 1%; font-size: 15px;')
+              .card-body
+                != messages('message', locals)
+                .row 
+                  .col-md-2(style='padding-top: 0.2%;')
+                    h3
+                      // img(src='../images/icons/tag.png', style='height: 20px;') 
+                      | Konto / Ime:
+                  .col-md-7
+                    .form-group
+                      input#konto.inputData.form-control(type='text', name="konto", placeholder='Konto / Ime', style='width: 100%; font-size: 15px;')
+                  .col-md-3 
+                    .form-group
+                      button#kontoButton.btn.btn-primary.btn-lg.btn-block(type='submit' style='width: 100%; height: 72%;') 
+                        font(size='2.5') Nađi
+        .row
+          .card(style='margin: 0% 0% 0% 2.5%; width: 70%; font-size: 5px 1rem;')
+            .card-body
+              != messages('message', locals)
+              .row
+                .col-md-4
+                  img(src='../images/icons/universal_avatar.png', style='height: 250px; padding: 2% 2%;') 
+                .col-md-8
+                  table(style='width: 100%;')
+                    tr
+                      td Ime
+                      td 
+                        input.ime.form-control(type='text', name="ime", disabled='', placeholder='Ime', style='font-size: 15px;')
+                        br
+                    tr
+                      td Šifra
+                      td 
+                        input.sifra.form-control(type='text', name='sifra', disabled='', placeholder='Šifra', style='font-size: 15px;')
+                        br
+                    tr
+                      td Mesto
+                      td 
+                        input.mesto.form-control(type='text', name='mesto', disabled='', placeholder='Mesto', style='font-size: 15px;')
+                        br
+                    tr
+                      td Adresa
+                      td 
+                        input.adresa.form-control(type='text', name='adresa', disabled='', placeholder='Adresa', style='font-size: 15px;')
+                        br
+                    tr
+                      td Konto
+                      td 
+                        input.konto.form-control(type='text', name='konto', disabled='', placeholder='Konto', style='font-size: 15px;')
+        .row(style='margin-top: 1%;')
+          .col-md-12
+            .card(style='margin: 0% 1% 1% 1%; font-size: 15px;')
+              .card-body
+                != messages('message', locals)
+                .row 
+                  .col-md-2(style='padding-top: 0.2%;')
+                    h3
+                      img(src='../images/icons/money.png', style='height: 20px; padding-right: 4%;') 
+                      | Uplata:
+                  .col-md-2
+                    .form-group
+                      input.datum.form-control(type='text', name="datum", value= datum, style='width: 100%; font-size: 15px;')
+                  .col-md-5
+                    .form-group
+                      input.dug.form-control(type='text', name="dug", placeholder='Dug', style='width: 100%; font-size: 15px;')
+                  .col-md-3 
+                    .form-group
+                      button#proknjiziButton.btn.btn-primary.btn-lg.btn-block(type='submit' style='width: 100%; height: 72%;') 
+                        font(size='2.5') Proknjiži
+            button#showKarticaButton.btn.btn-info.btn-lg.btn-block(type='submit' style='display: none; margin: 2% 0% 2% 1%; width: 98%; height: 40px;') 
+              font(size='2.5') Pogledaj karticu    
+            br 
+            .kTable(style='display: none; padding-left: 1%; padding-right: 1%;')
+                table#location.table.table-hover
+                  thead
+                    tr.bg-primary(style="text-align: center;")
+                      th Vrsta
+                      th Nalog
+                      th Račun 
+                      th Datum
+                      th Knjižen     
+                      th Duguje
+                      th Potražuje
+                      th Saldo 
+                      th Vodomer
+                      th Cena
+                      th Trobračuna
+                      th PDV Opšta
+                      th PDV Posebna
+                    tbody#tableBody                

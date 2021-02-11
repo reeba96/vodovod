@@ -1,0 +1,127 @@
+extends layout
+
+block content
+  body#page-top(data-target='.navbar-fixed-top')
+    // Navigation
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.page-scroll(href='/knjigovodja/index', , data-toggle='tooltip', title='Home') 
+            img(src='../images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a.active(href='/knjigovodja/dokumenti') Dokumenti
+            .dropdown
+              li.dropli(onclick='myFunction()') Vesti
+                #myDropdown.dropdown-content
+                  a(href='/knjigovodja/vesti') Objava
+                  a(href='/knjigovodja/vestiBrisanje') Sakrivanje i brisanje 
+            li
+              a(href='/knjigovodja/index') Blagajna
+            li#dropmenu.dropdown
+                img.avatarIcon(src='../images/icons/avatar_1.jpg')
+                .dropdown-content
+                  a(href='#' style="pointer-events: none;") #{naziv}
+                  a(href='/odjava') Odjava
+    .container(style='margin-top: 8em; margin-bottom: 4em;')
+      .card.person-card
+        .card-body
+          .row
+            .col-md
+              .card(style='margin-top: -4%; margin-left: 25%; margin-right: 25%; font-size: 15px; padding-bottom: 2%; margin-bottom: 1%;')
+                .card-body
+                  img.avatarIcon(src='../images/icons/note.png' style='margin-top: -15px; height: 40px;')
+                  h2.card-title Objava na sajtu
+                  br
+                  br
+                  != messages('message', locals)
+                  .form-group(style='margin-top: 3%;')
+                      label.col-form-label Izaberite mesto objave (naziv fajla postaje link na sajtu): 
+                      select#tip.form-control(name='tip' style='height: 30px; font-size: 14px;')
+                        option Izaberite mesto objave
+                        option Javna nabavka
+                        option Izveštaj
+                        option Osnovni dokument
+                        option Radna biografija
+                  .row#hideJavnaNabavka(style='display: none; margin-left: 0.5%;')
+                    form(method='POST', action='/knjigovodja/dokumenti/saveJavnaNabavka', id="uploadForm1", enctype="multipart/form-data")
+                      .form-group(style='margin-top: 3%;')
+                        label.col-form-label Izaberite fajl (doc, docx, pdf): 
+                        input(type='file', name='javnaNabavka' style='margin-left: 2%;')
+                      .form-group
+                        label.col-form-label Šalju se potvrdni linkovi na adrese:
+                        input.ulica.form-control(type='text', name='ulica' disabled='' value='' style='font-size: 14px;')
+                        button.btn.btn-info.btn-lg.btn-block(type='submit' style='margin-top: 8%; margin-left: 30%; width: 40%; font-size: 14px;') 
+                          font(size='2.5') Pošalji
+
+                  .row#hideIzvestaj(style='display: none; margin-left: 0.5%;')
+                    form(method='POST', action='/knjigovodja/dokumenti/saveIzvestaj', id="uploadForm2", enctype="multipart/form-data")
+                      .form-group(style='margin-top: 3%;')
+                        label.col-form-label Izaberite fajl (doc, docx, pdf): 
+                        input(type='file', name='izvestaj' style='margin-left: 2%;')
+                      .form-group
+                        label.col-form-label Šalju se potvrdni linkovi na adrese:
+                        input.ulica.form-control(type='text', name='ulica' disabled='' value='' style='font-size: 14px;')
+                        button.btn.btn-info.btn-lg.btn-block(type='submit' style='margin-top: 8%; margin-left: 30%; width: 40%; font-size: 14px;') 
+                          font(size='2.5') Pošalji
+
+                  .row#hideOsnovniDokument(style='display: none; margin-left: 0.5%;')
+                    form(method='POST', action='/knjigovodja/dokumenti/saveOsnovniDokument', id="uploadForm3", enctype="multipart/form-data")
+                      .form-group(style='margin-top: 3%;')
+                        label.col-form-label Izaberite fajl (doc, docx, pdf): 
+                        input(type='file', name='osnovniDokument' style='margin-left: 2%;')
+                      .form-group
+                        label.col-form-label Šalju se potvrdni linkovi na adrese:
+                        input.ulica.form-control(type='text', name='ulica' disabled='' value='' style='font-size: 14px;')
+                        button.btn.btn-info.btn-lg.btn-block(type='submit' style='margin-top: 8%; margin-left: 30%; width: 40%; font-size: 14px;') 
+                          font(size='2.5') Pošalji
+
+                  .row#hideRadnaBiografija(style='display: none; margin-left: 0.5%;')
+                    form(method='POST', action='/knjigovodja/dokumenti/saveRadnaBiografija', id="uploadForm", enctype="multipart/form-data")
+                      .form-group(style='margin-top: 3%;')
+                        label.col-form-label Izaberite fajl (doc, docx, pdf): 
+                        input(type='file', name='radnaBiografija' style='margin-left: 2%;' multiple='')
+                      .form-group
+                        label.col-form-label Šalju se potvrdni linkovi na adrese:
+                        input.ulica.form-control(type='text', name='ulica' disabled='' value='' style='font-size: 14px;')
+                        button.btn.btn-info.btn-lg.btn-block(type='submit' style='margin-top: 8%; margin-left: 30%; width: 40%; font-size: 14px;')
+                          font(size='2.5') Pošalji
+        // KOZBESZERZESEK LISTAZASA
+        // .row
+          .col-md
+            button.btn.btn-info.btn-lg(onclick='hideJavneNabavke()' style='margin-top: 2%; width: 100%;') 
+              font(size='2.5') Listanje javnih nabavki
+        .row#hideDivJavneNabavke(style='display: none;')
+          .col-md
+            .card.person-card(style='margin-top: 2%; margin-bottom: 1%;')
+              .card-body
+                table.table(style='margin-top: -4%; text-align: center;').table-hover
+                  thead.tableheader(align='center')
+                    tr
+                      th Tip
+                      th Fajl
+                      th
+                    tbody
+                      - for(var i = 0; i < arrayLength; i++) {
+                        tr
+                          if fileTypes[i] == 'pdf' || fileTypes[i] == 'PDF'
+                            td
+                              img(src='../images/icons/pdf.png' height='35px')
+                          else if fileTypes[i] == 'doc'
+                            td
+                              img(src='../images/icons/doc.png' height='35px')
+                          else
+                            td
+                              img(src='../images/icons/docx.png' height='35px')
+                          td(style='vertical-align: middle;')
+                            a(href='../files/javneNabavke/' + files[i], download='')= files[i]
+                          td(align='center' style='vertical-align: middle;')
+                            //a(href='/knjigovodja/delete/' + files[i], data-toggle='tooltip', title='Brisanje')
+                              img(src='../images/icons/delete.png' height='17px')
+                      - }

@@ -1,0 +1,229 @@
+extends layout
+
+block content
+  body#page-top(data-target='.navbar-fixed-top')
+    // Navigation
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          a.navbar-brand.page-scroll(href='/admin/index', , data-toggle='tooltip', title='Home') 
+            img(src='../images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a.active(href='/admin/index') Komitenti
+            li
+              a(href='/admin/nalsta') Nalog Stavke
+            li
+              a(href='/citac/index') #{naziv}
+            li
+              .dropdown
+                img.avatarIcon(src='../images/icons/avatar_1.jpg')
+                .dropdown-content
+                  a(href='#' style="pointer-events: none;") #{naziv}
+                  a(href='/odjava') Odjava
+    .container(style='margin-top: 8em;')
+        .row
+          .section-title
+            h2 Komitent
+          form#komitentForm(method='POST', action='/citac/index/save', name='editNalsta' style='margin-top: 8em; margin-left: -15em; width: 60%;')
+            != messages('message', locals)
+            if errors
+              each error, i in errors
+                div(class="alert alert-danger") #{error.msg}
+            .row
+              .col-md-6
+                .form-group
+                  p Šifra
+                  input.form-control(type='text', name="sifra", value=komitent.sifra, maxlength="10", required='', oninvalid="this.setCustomValidity('Kerem adja meg a nevet!')", oninput="setCustomValidity('')")
+              .col-md-6
+                .form-group
+                  p Naziv
+                  input.form-control(type='text', value=komitent.naziv, name="naziv", maxlength="60")
+            .row
+              .col-md-6
+                .form-group
+                  p Adresa
+                  input.form-control(type='text', value=komitent.adresa, name="adresa", maxlength="60")
+              .col-md-6
+                .form-group
+                  p Mesto
+                  input.form-control(type='text', value=komitent.mesto, name="mesto", maxlength="30")
+            .row
+              .col-md-6
+                .form-group
+                  p Telefon
+                  input.form-control(type='text', value=komitent.tel, name="tel", maxlength="24")
+              .col-md-6
+                .form-group
+                    p Email
+                    input.form-control(type='Email', value=komitent.email, name="email", maxlength="30")
+            .row
+              .col-md-6
+                .form-group
+                  p Konto
+                  input.form-control(type='text', value=komitent.konto, name="konto", maxlength="13")
+              .col-md-6
+                .form-group
+                  p Valuta
+                  input.form-control(type='text', value=komitent.valuta, name="valuta", maxlength="3")
+            .row
+              .col-md-6
+                .form-group
+                  p ID
+                  input.form-control(type='text', value=komitent.id, name="id", maxlength="25") 
+              .col-md-6
+                .form-group
+                  p Lozinka
+                  input.form-control(type='text', value=komitent.lozinka, name="lozinka", maxlength="100")
+            .row
+              .col-md-6
+                .form-group
+                  p Telefon2
+                  input.form-control(type='text', value=komitent.tel2, name="tel2", maxlength="24")
+              .col-md-6
+                .form-group
+                  p Fax
+                  input.form-control(type='text', value=komitent.fax, name="fax", maxlength="24")
+            .row
+              .col-md-6
+                .form-group
+                  p Osoba
+                  input.form-control(type='text', value=komitent.osoba, name="osoba", maxlength="25")
+              .col-md-6
+                .form-group
+                  p Žiro
+                  input.form-control(type='text', value=komitent.ziro, name="ziro", maxlength="30")
+            .row
+              .col-md-6
+                .form-group
+                  p Žiro2
+                  input.form-control(type='text', value=komitent.ziro2, name="ziro2", maxlength="18")
+              .col-md-6
+                .form-group
+                  p Žiro3
+                  input.form-control(type='text', value=komitent.ziro3, name="ziro3", maxlength="18")
+            .row
+              .col-md-6
+                .form-group
+                  p Žiro4
+                  input.form-control(type='text', value=komitent.ziro4, name="ziro4", maxlength="18")
+              .col-md-6
+                .form-group
+                  p Žiro5
+                  input.form-control(type='text', value=komitent.ziro5, name="ziro5", maxlength="18")
+            .row
+              .col-md-6
+                .form-group
+                  p Žiro6
+                  input.form-control(type='text', value=komitent.ziro6, name="ziro6", maxlength="18")
+              .col-md-6
+                .form-group
+                  p Žiro7
+                  input.form-control(type='text', value=komitent.ziro7, name="ziro7", maxlength="18")
+            .row
+              .col-md-6
+                .form-group
+                  p Žiro8
+                  input.form-control(type='text', value=komitent.ziro8, name="ziro8", maxlength="18")
+              .col-md-6
+                .form-group
+                  p Matični Broj
+                  input.form-control(type='text', value=komitent.matbr, name="matbr", maxlength="10")
+            .row
+              .col-md-6
+                .form-group
+                  p Registarski Broj
+                  input.form-control(type='text', value=komitent.regbr, name="regbr", maxlength="12")
+              .col-md-6
+                .form-group
+                  p Delatnost
+                  input.form-control(type='text', value=komitent.delatnost, name="delatnost", maxlength="8")
+            .row
+              .col-md-6
+                .form-group
+                  p PIB
+                  input.form-control(type='text', value=komitent.pib, name="pib", maxlength="20")
+              .col-md-6
+                .form-group
+                  p Odobrenje
+                  input.form-control(type='text', value=komitent.odobrenje, name="odobrenje", maxlength="15")
+            .row
+              .col-md-6
+                .form-group
+                  p Napomena
+                  input.form-control(type='text', value=komitent.napomena, name="napomena", maxlength="30")
+              .col-md-6
+                .form-group
+                  p Otpremio
+                  input.form-control(type='text', value=komitent.otpremio, name="otpremio", maxlength="2")
+            .row
+              .col-md-6
+                .form-group
+                  p RabatMarža
+                  input.form-control(type='text', value=komitent.rabatmarza, name="rabatmarza", maxlength="80")
+              .col-md-6
+                .form-group
+                  p Updvsis
+                  input.form-control(type='text', value=komitent.updvsis, name="updvsis", maxlength="1")
+            .row
+              .col-md-6
+                .form-group
+                  p Mes01
+                  input.form-control(type='text', value=komitent.mes01, name="mes01", maxlength="12")
+              .col-md-6
+                .form-group
+                  p Mes02
+                  input.form-control(type='text', value=komitent.mes02, name="mes02", maxlength="12")
+            .row
+              .col-md-6
+                .form-group
+                  p Mes03
+                  input.form-control(type='text', value=komitent.mes03, name="mes03", maxlength="12")
+              .col-md-6
+                .form-group
+                  p Mes04
+                  input.form-control(type='text', value=komitent.mes04, name="mes04", maxlength="12")
+            .row
+              .col-md-6
+                .form-group
+                  p Mes05
+                  input.form-control(type='text', value=komitent.mes05, name="mes05", maxlength="12")
+              .col-md-6
+                .form-group
+                  p Mes06
+                  input.form-control(type='text', value=komitent.mes06, name="mes06", maxlength="12")
+            .row
+              .col-md-6
+                .form-group
+                  p Mes07
+                  input.form-control(type='text', value=komitent.mes07, name="mes07", maxlength="12")
+              .col-md-6
+                .form-group
+                  p Mes08
+                  input.form-control(type='text', value=komitent.mes08, name="mes08", maxlength="12")
+            .row
+              .col-md-6
+                .form-group
+                  p Mes9
+                  input.form-control(type='text', value=komitent.mes09, name="mes09", maxlength="12")
+              .col-md-6
+                .form-group
+                  p Mes10
+                  input.form-control(type='text', value=komitent.mes10, name="mes10", maxlength="12")
+            .row
+              .col-md-6
+                .form-group
+                  p Mes11
+                  input.form-control(type='text', value=komitent.mes11, name="mes11", maxlength="12")
+              .col-md-6
+                .form-group
+                  p Mes12
+                  input.form-control(type='text', value=komitent.mes12, name="mes12", maxlength="12")
+            .row
+              .col-md-6
+                .form-group
+                  p User
+                  input.form-control(type='text', value=komitent.user, name="user", maxlength="16")
+                  br
+            input.btn.btn-primary(type='submit' value="Sačuvaj") 

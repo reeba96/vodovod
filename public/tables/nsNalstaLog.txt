@@ -1,0 +1,3 @@
+﻿{ "date": "2020-05-17 21:30:08", "user": "ČAPO RADMILA", "imported CSV rows": "0" }
+ 
+{ "date": "2020-05-17 21:38:35", "user": "ČAPO RADMILA", "imported CSV rows": "3679" } 

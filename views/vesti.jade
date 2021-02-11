@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  body#page-top(data-target='.navbar-fixed-top')
+    // Navigation
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.page-scroll(href='/') 
+            img(src='images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a.active(href='/vesti') Vesti
+            li
+              a(href='/istorijat') Istorijat
+            li
+              a(href='/Onama') Kontakt
+            li
+              a(href='/dokumenti') Dokumenti
+            li
+              a(href='/login') Prijava
+  #vesti
+    .container
+      .section-title
+        br
+        br
+        h2 Vesti
+        br
+        br
+        br
+        br
+
+        // Vesti loop
+        for val in helps
+          .col-md-12(style="margin-left: -1%;")
+            h3 #{val.hint}
+            | Datum objave: #{val.datum}
+            br
+            br
+            br
+            img(src='images/vesti/' + '#{val.hint.trim()}' + '.jpg')
+            br
+            br
+            br
+          .col-md-12(style="margin-left: -1%;")
+            p #{val.descript}
+            br

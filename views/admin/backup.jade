@@ -1,0 +1,97 @@
+extends layout
+
+block content
+  body#page-top(data-target='.navbar-fixed-top')
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+          a.navbar-brand.page-scroll(href='/admin/index', , data-toggle='tooltip', title='Home') 
+            img(src='../images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            if sifra == 999100001
+              li
+                a.active(href='/admin/backup') Backup
+              li
+                a(href='/admin/poruke') Poruke
+            li
+              a(href='/admin/index') Komitenti
+            li
+              a(href='/admin/nalsta') Nalog Stavke
+            li
+              a(href='/admin/nsnalsta') Neproknjižene Stavke
+            li
+              .dropdown
+                img.avatarIcon(src='../images/icons/avatar_1.jpg')
+                .dropdown-content
+                  a(href='#' style="pointer-events: none;") #{naziv}
+                  a(href='/odjava') Odjava
+    #vesti
+      .container
+        .section-title
+            h2 Export tabele
+        != messages('message', locals)
+        table.table(class="exportTables")
+          thead.tableheader 
+            tr
+              th Ime tabela
+              th Format
+              th
+            tbody
+              tr
+                td Nalog stavke
+                td .CSV
+                td
+                  form(action='/admin/backup/exportNalsta', method='post')
+                    input.btn.btn-info(type='submit', value='Export', id='submitExport1', name='submitExport1')
+              tr
+                td Neproknjižene stavke
+                td .CSV
+                td
+                  form(action='/admin/backup/exportNsNalsta', method='post')
+                    input.btn.btn-info(type='submit', value='Export', id='submitExport2', name='submitExport2')
+              tr
+                td Komitenti
+                td .CSV
+                td
+                  form(action='/admin/backup/exportKomitent', method='post')
+                    input.btn.btn-info(type='submit', value='Export', id='submitExport3', name='submitExport3')
+              tr
+                td Konto
+                td .CSV
+                td
+                  form(action='/admin/backup/exportKonto', method='post')
+                    input.btn.btn-info(type='submit', value='Export', id='submitExport4', name='submitExport4')
+
+        .section-title(style='padding-top: 25px;')
+            h2 Import tabele (sa FTP servera)
+        table.table(class="importTables")
+          != messages('message', locals)
+          thead.tableheader
+            tr
+                th Ime tabela
+                th Format
+                th
+            tbody
+              tr
+                td Nalog stavke
+                td .CSV
+                td 
+                  input.btn.btn-info(type='submit', value='Import', id='submitImport1', name='submitImport1')
+              tr
+                td Neproknjižene stavke
+                td .CSV
+                td
+                  input.btn.btn-info(type='submit', value='Import', id='submitImport2', name='submitExport2')
+              tr
+                td Komitenti
+                td .CSV
+                td
+                  input.btn.btn-info(type='submit', value='Import', id='submitImport3', name='submitImport3')
+              tr
+                td Konto
+                td .CSV
+                td
+                  input.btn.btn-info(type='submit', value='Import', id='submitImport4', name='submitImport4')

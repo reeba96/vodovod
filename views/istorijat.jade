@@ -1,0 +1,66 @@
+extends layout
+
+block content
+  body#page-top(data-target='.navbar-fixed-top')
+    // Navigation
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.page-scroll(href='/') 
+            img(src='images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/vesti') Vesti
+            li
+              a.active(href='/istorijat') Istorijat
+            li
+              a(href='/Onama') Kontakt
+            li
+              a(href='/dokumenti') Dokumenti
+            li
+              a(href='/login') Prijava
+  #vesti
+    .container
+      .section-title
+        h2 Istorijat
+        .col-md-12(style='margin-left: -1%;')
+            br
+            br
+            br
+            | Datum kreiranja: 20 maj 2017
+            br
+            br
+        .col-md-9(style='margin-left: -1%;')
+            p
+              | Dana 30.11.2016. godine održana je 8. sednica Skupštine Grada Sombora na kojoj je doneta Odluka 
+              | o preuzimanju osnivačkih prava nad KP „„Vodovod“ Bezdan ( Sl.list grada Sombora br.27/2016) kao 
+              | i Odluka o osnivanju javnog komunalnog preduzeća „Vodovod“ Bezdan ( Sl.list grada Sombora br.27/2016)
+              | kojom su u cilju regulisanja pravnog statusa postojećeg komunalnog preduzeća KP „Vodovod Bezdan, 
+              | od strane Grada Sombora preuzeta osnivačka prava i obaveze nad Komunalnim preduzećem Vodovod Bezdan,
+              | kao i osnovano novo JKP „Vodovod“ Bezdan.
+              br
+              br
+              | Javno komunalno preduzeće „Vodovod Bezdan“ je javno preduzeće kome se poveravaju poslovi 
+              | sakupljanja, prečišćavanja i distribucije vode i odvođenja otpadnih voda na teritoriji 
+              | naseljenog mesta Bezdan, Bački Breg, Bački Monoštor i Kolut. Pretežna delatnost preduzeća je - 
+              | Skupljanje, prečišćavanje i distribucija vode. JKP „Vodovod“ Bezdan je nakon donošenja navedenih 
+              | Odluka i izvršenog usklađivanja sa Zakonom o javnim preduzećima upisano u registar Agencije za 
+              | privredne registre pod brojem BD 105521/2016
+              | Nekadašnje preduzeće KP Vodovod Bezdan, čiji je pravni naslednik JKP „Vodovod“ Bezdan, osnovano 
+              | je od strane Mesne zajednice Bezdan na sednici održanoj dana 29. marta 1990. godine kada je doneta 
+              | Odluka o osnivanju komunalnog preduzeća u oblasti vodosnabdevanja građana. Osnivač ovog preduzeća 
+              | bila je Mesna zajednica Bezdan a novoformirano preduzeće poslovalo je pod imenom Komunalno preduzeće
+              | „Vodovod“ Bezdan, sa potpunom odgovornošću. Sedište preduzeća je bilo u Bezdanu, Somborski put bb. 
+              | Delatnost KP Vodovod Bezdan bila je: Proizvodnja, prerada i disribucija vode za piće, izgradnja, 
+              | održavanje i popravka objekata i mreže vodovoda, pružanje vodoinstalaterskih usluga. KP „„Vodovod „ 
+              | Bezdan upisano je u sudski registar Okružnog suda u Somboru pod brojem Fi 302/90.
+              br
+              br
+              | Danas, JKP „Vodovod„ Bezdan kao javno preduzeće koje obavlja poslove skupljanja, prečišćavanja i 
+              | distribucije vode, pruža i niz usluga u sklopu svoje osnovne delatnosti .

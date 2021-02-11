@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  body#page-top(data-target='.navbar-fixed-top')
+    // Navigation
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+          a.navbar-brand.page-scroll(href='/admin/index', , data-toggle='tooltip', title='Home') 
+            img(src='../images/vodovod_logo.png' height='27px' style='margin-top: -2px;')
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-
+            if sifra == 999100001
+              li
+                a(href='/admin/backup') Backup
+              li
+                a(href='/admin/poruke') Poruke
+            li
+              a.active(href='/admin/index') Komitenti
+            li
+              a(href='/admin/nalsta') Nalog Stavke
+            li
+              a(href='/admin/nsnalsta') Neproknjižene Stavke
+            li
+              .dropdown
+                img.avatarIcon(src='../images/icons/avatar_1.jpg')
+                .dropdown-content
+                  a(href='#' style="pointer-events: none;") #{naziv}
+                  a(href='/odjava') Odjava
+    .section-title(style='margin-top: 7em;')
+      form#searchForm(method='post', action='/admin/index/search')
+          input.textbox(type='text', name='sifra', placeholder='Šifra', maxlength="10")
+          input.button(title='Search', value='', type='submit')
+      h2 Komitenti
+    table.table.table-hover
+      != messages('message', locals)
+      thead.tableheader
+          tr
+              th Šifra
+              th Naziv
+              th Adresa
+              th Mesto
+              th Telefon
+              th Email
+              th Konto
+              th ID
+          tbody
+              for val in komitents
+                  tr
+                    td #{val.sifra}
+                    td #{val.naziv}
+                    td #{val.adresa}
+                    td #{val.mesto}
+                    td #{val.tel}
+                    td #{val.email}
+                    td #{val.konto}
+                    td #{val.id}
