@@ -1,3 +1,4 @@
+# Ignored files and folders
 node_modules
 .env
 .env_webserver
